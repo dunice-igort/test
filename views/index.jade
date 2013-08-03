@@ -1,5 +1,22 @@
 extends layout
-
+body
 block content
-  h1= title
-  p Welcome to #{title}
+    div.title
+        "title"
+    div#image_plugin
+        div#slideshowHolder
+            div.div_title
+                img.test(src='images/img1.jpg', alt='img1')
+            div.div_title
+                img.test(src='images/img2.jpg', alt='img2')
+            div.div_title
+                img.test(src='images/img3.jpg', alt='img3')
+            div.div_title
+                img.test(src='images/img4.jpg', alt='img3')
+
+
+        div#navigation
+            div.nav_item#next
+                ='next'
+            div.nav_item#down
+                ='down'

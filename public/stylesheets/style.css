@@ -6,3 +6,18 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+.ft-next{
+    height: 100%;
+    background-color: red;
+    width: 40px;
+    right: -40px;
+}
+
+.ft-prev{
+    height: 100%;
+    background-color: red;
+    width: 40px;
+    left: -40px;
+}
