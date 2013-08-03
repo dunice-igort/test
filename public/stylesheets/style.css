@@ -9,15 +9,22 @@ a {
 
 
 .ft-next{
-    height: 100%;
-    background-color: red;
     width: 40px;
     right: -40px;
 }
 
-.ft-prev{
+.ft-next, .ft-prev {
+    z:index: 1000;
+    opacity: 0.2;
+    background-color: #1321ff;
     height: 100%;
-    background-color: red;
+}
+
+.ft-prev{
     width: 40px;
     left: -40px;
+}
+
+.ft-next:hover, .ft-prev:hover {
+    opacity: 0.4;
 }

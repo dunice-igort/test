@@ -219,8 +219,8 @@
       $('#ft-prev-'+el.id).css({
         'position' 	: 'absolute',
 //        'left'		: 0,
-        'z-index' 	: 1001,
-        'opacity'	: 0.7
+        'z-index' 	: 1001
+//        'opacity'	: 0.7
       }).click( function(e){
           e.preventDefault();
           $.transition(el,'prev', true);
@@ -231,8 +231,8 @@
       $('#ft-next-'+el.id).css({
         'position' 	: 'absolute',
 //        'right'		: 0,
-        'z-index' 	: 1001,
-        'opacity'	: 0.7
+        'z-index' 	: 1001
+//        'opacity'	: 0.7
       }).click( function(e){
           e.preventDefault();
           $.transition(el, undefined, true);

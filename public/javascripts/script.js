@@ -10,4 +10,24 @@ $(document).ready(function() {
     $('#slideshowHolder').appned
   })
 
+
+  var Item = Backbone.Model.extend({
+    defaults: function() {
+      return {
+        title: "tile",
+        url: "http://vk.com",
+        done: false
+      };
+    },
+    toggle: function() {
+      this.save({done: !this.get("done")});
+    }
+  })
+
+  var ItemList = Backbone.Collection.extend({
+    model: Item
+   })
+
+  var itemList = new ItemList;
+
 });
