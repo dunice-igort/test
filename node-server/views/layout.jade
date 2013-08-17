@@ -1,0 +1,41 @@
+doctype 5
+html
+head
+  title= title
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  script(src='javascripts/libs/jquery.js', type='text/javascript')
+  script(src='javascripts/libs/underscore-min.js', type='text/javascript')
+  script(src='javascripts/libs/socket.io.min.js', type='text/javascript')
+
+
+
+body
+  div#wrapper
+    header#header
+      div#logo
+        a(href="/")
+          img(src="images/LittleSnapper.png")
+      menu#menu
+        li
+          a(href="/about") About
+        li
+          a(href="/work") Work
+        li
+          a(href="/store") Auction
+    div.container
+      - if (locals.user)
+        div
+          | Hello, #{locals.user.username}
+        a(href="/logout") (logout)
+      - else
+        div select user
+        ul
+          - for user in users
+            li
+              a(href="/login?username=#{user.username}&password=#{user.password}")= user.username
+      - locals.user = locals.user || 'guest'
+      - if (locals.products && locals.user)
+
+    block content

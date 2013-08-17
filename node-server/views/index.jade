@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    script(src='javascripts/script.js', type='text/javascript')
+    script(type="text/template", id="owner-price-request-item")
+        form.price(id!="price-<%= priceId %>")
+            span.username From: <%= ownername %>
+            input(name="userId", type="hidden", value!="<%= userId %>")
+            input(name="priceId", type="hidden", value!="<%= priceId %>")
+            input(name="price", type="text", value!="<%= price %>")
+    script(type="text/template", id="non-owner-price-request-item")
+        div.price(id!="price-<%= priceId %>")
+            div Answer is:
+            div(class="price-value") <%= price %>
+
+
+    h2 Auction
+    - for product in locals.products
+        form.product.span4(id="product-#{product.id}", class="")
+          div.name= "Product: "+ product.name
+          div.owner= "Owner: "+product.user.username
+          img.icon(src=product.src)
+          - var isOwner = product.user.id == locals.user.id
+          - if (!isOwner && locals.user != 'guest')
+              input(type="hidden", name="productId", value=product.id)
+              input(type="hidden", name="ownerId", value=product.ownerId)
+              input(type="submit", class="inp_submit", value="Request price")
+          div.prices(class=(isOwner) ? "owner" : "non-owner")
+

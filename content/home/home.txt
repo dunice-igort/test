@@ -1,0 +1,18 @@
+Title: Home
+----
+
+slide: slideShow
+----
+
+----
+blog: blog
+----
+
+----
+twiter: twiter
+----
+
+----
+sitemap: sitemap
+----
+

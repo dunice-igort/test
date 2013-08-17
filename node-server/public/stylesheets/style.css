@@ -1,0 +1,110 @@
+.prices {
+    width: 186px;
+    height: 58px;
+}
+input {
+    width: 187px;
+    height: 70px;
+}
+
+h2{
+    padding-left: 30px
+}
+.inp_submit{
+    width: 200px!important;
+}
+
+.product {
+    width: 200px;
+    height: 380px;
+    display: inline-block;
+    border: 1px solid #d3d3d3;
+    padding: 10px;
+}
+
+.price-value {
+    word-wrap: break-word;
+    height: 63px;
+    overflow: auto;
+    width: 207px;
+}
+
+/*----------------------------------------------------------------------------*/
+
+a, li {
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+}
+
+/*----------------------------------------------------------------------------*/
+#wrapper {
+    width: 800px;
+    margin: 0 auto;
+    /*border: 1px solid red;*/
+}
+
+#header {
+    height: 120px;
+    width: 100%;
+    float: left;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+#logo {
+    /*background: url("../images/LittleSnapper.png");*/
+    width: 164px;
+    height: 76px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 42px;
+}
+
+#menu {
+    float: right;
+    margin-right: 50px;
+    margin-top: 70px;
+    list-style: none;
+    /*border: 1px solid red;*/
+}
+
+#menu li{
+    display: inline;
+    padding: 10px;
+}
+
+#menu a {
+    text-decoration: none;
+    color: #a9a9a9;
+}
+
+/*----------------------------------------------------------------------------*/
+
+.item-wrapper {
+	width: 100%;
+	float: left;
+}
+
+
+.icon {
+	width: 164px;
+	height: 188px;
+}
+
+#sub-menu {
+float: left;
+margin-left: 210px;
+list-style: none;
+/*width: 300px;*/
+/*border: 1px solid red;*/
+}
+
+#sub-menu li {
+	display: inline;
+	padding: 10px;
+}
+
+#sub-menu a {
+	text-decoration: none;
+	color: #a9a9a9;
+}
