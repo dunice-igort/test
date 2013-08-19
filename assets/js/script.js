@@ -1,14 +1,13 @@
 jQuery(function($) {
     
-//  console.log("local",location.pathname.search("aqdm"))
-
   var socket = io.connect('http://localhost:3000')
-  ,   messTemplaete = _.template($('#message-template').html())
-  ,   user = {name:'test'}
-  ,   adminChat = _.template($('#admin-chat-template').html())
-  ,   chatWindow = _.template($('#chat-window-template').html())
-  ,   reg = new RegExp("admin")
-  ,   hits = location.pathname.match(reg)
+    , messTemplaete = _.template($('#message-template').html())
+    , user = {name:'test'}
+    , adminChat = _.template($('#admin-chat-template').html())
+    , chatWindow = _.template($('#chat-window-template').html())
+    , reg = new RegExp("admin")
+    , hits = location.pathname.match(reg)
+    
   renderUser(user)
   
   if(hits){
@@ -18,21 +17,15 @@ jQuery(function($) {
     $("body").append(chatWindow)
   }
   
-  
   $(".log_btn").on('click', function(){
     $('.modal').modal('show')
   })
   
   $(".btn-ok").on('click', function(){
-    console.log('btrn-ok')
     var logName = $("#login-name").val()
       , logPass = $("#login-pass").val()
     user = {name: logName}
     renderUser(user)
-//    socket.emit('find-user', {
-//      user:logName,
-//      pass:logPass
-//    })
   })
   
   socket.on('user-logged',function (data) {
@@ -61,9 +54,8 @@ jQuery(function($) {
       sendMessage(data)
       $("#text-mess").val("")
     }
-
   })
-  
+   
   function renderUser(user) {
     $("#chat-window").toggleClass('logged', !(user.name == ''))
     $("#userName").html((user.name) ? user.name : 'please login')
@@ -76,6 +68,8 @@ jQuery(function($) {
   
   function adminSendMess() {
     $(".admin-text-mess").unbind("keypress")
+    $(".admin-text-mess").unbind("focus")
+    $(".close-admin-window").unbind("click")
     $(".admin-text-mess").on("keypress", function(event) {
       var mess = $(this).val()
       var idSend = $(this).attr("send")
@@ -91,9 +85,15 @@ jQuery(function($) {
         $("#"+idSend).append(messTemplaete(data))
       }
     })
-   $(".close-admin-window").on("click",function (event) {
+    
+    $(".close-admin-window").on("click",function (event) {
+     socket.emit("admin-send-mess", {name: "Info", mess:"Admin has logged out", idSend: $(this).parent().attr("send")})
      $(this).parent(".admin-chat").remove()
-   })
+    })
+
+    $(".admin-text-mess").on("focus",function (event) {
+     $(this).parent().find(".no-read").removeClass("no-read")
+    })
   }
     
   socket.on('new-mess', function (data) {
@@ -101,9 +101,8 @@ jQuery(function($) {
   })
   
   socket.on('admin-mess', function (data) {
-    console.log("data",data)
     var dataMessArr = $(".display-mess")
-    var appendSt = false
+      , appendSt = false
     _.each(dataMessArr,function (item) {
       var itemId = $(item).attr("id")
       if(itemId == data.idClient){
@@ -117,5 +116,4 @@ jQuery(function($) {
     }
     adminSendMess()
   })
-
 })

@@ -17,7 +17,7 @@
   <script type="text/template", id="message-template">
     <div>
       <span class="name-message"><%=name%> : </span>
-      <span class="no-read"><%=mess%></span>
+      <span class=''><%=mess%></span>
     </div>
   </script>
   
@@ -37,15 +37,15 @@
 
   <script type="text/template", id="chat-window-template">
     <div id="chat-window" class="collapsed logged">
-        <div id="ld_sp"> Please login ... </div>
-          <div class="title_chat">
-              Live-support
-          </div>
-          <div id="chat_content">
-              <div class="display-mess " id="mess-apender"></div>
-              <span>Enter a message</span>
-              <textarea id="text-mess" class="text-unres"></textarea>
-          </div>
+    <div id="ld_sp"> Please login ... </div>
+      <div class="title_chat">
+       Live-support
+      </div>
+      <div id="chat_content">
+        <div class="display-mess " id="mess-apender"></div>
+        <span>Enter a message</span>
+        <textarea id="text-mess" class="text-unres"></textarea>
+      </div>
     </div>
   </script>
   
@@ -70,22 +70,22 @@
   </div>
   <div class="modal-body">
     <table>
-        <tr>
-          <td>
-            <lable name="name">Enter you name</lable>
-          </td>
-          <td>
-            <input name="name" type="text" id="login-name"></input>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <lable name="password">Enter you password &nbsp</lable>
-          </td>
-          <td>
-            <input name="password" id="login-pass" type="password"></input>
-          </td>
+      <tr>
+        <td>
+          <lable name="name">Enter you name</lable>
         </td>
+        <td>
+          <input name="name" type="text" id="login-name"></input>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <lable name="password">Enter you password &nbsp</lable>
+        </td>
+        <td>
+          <input name="password" id="login-pass" type="password"></input>
+        </td>
+      </tr>
     </table>
   </div>
   <div class="modal-footer">
@@ -93,7 +93,5 @@
     <button class="btn btn-ok">Login</button>
   </div>
 </div>
-  
-  
-  <div id="container">
+<div id="container">
   
