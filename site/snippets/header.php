@@ -17,7 +17,35 @@
   <script type="text/template", id="message-template">
     <div>
       <span class="name-message"><%=name%> : </span>
-      <span><%=mess%></span>
+      <span class="no-read"><%=mess%></span>
+    </div>
+  </script>
+  
+  <script type="text/template", id="admin-chat-template">
+    <div class="admin-chat" send="<%=idClient%>">
+      <div class="close close-admin-window">x</div>
+      <div class="title_chat">
+        Live-support
+      </div>
+      <div id="chat_content">
+        <div class="display-mess" id="<%=idClient%>"></div>
+        <span>Enter a message</span>
+        <textarea send="<%=idClient%>"  class="text-unres admin-text-mess"></textarea>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/template", id="chat-window-template">
+    <div id="chat-window" class="collapsed logged">
+        <div id="ld_sp"> Please login ... </div>
+          <div class="title_chat">
+              Live-support
+          </div>
+          <div id="chat_content">
+              <div class="display-mess " id="mess-apender"></div>
+              <span>Enter a message</span>
+              <textarea id="text-mess" class="text-unres"></textarea>
+          </div>
     </div>
   </script>
   
@@ -34,20 +62,6 @@
     <div class="dib fr log_btn">Login</div>
     <a href="/kirbycms/kirbycms-panel"><div id="temp-button" class="dib header-button"></div></a>
   </header>
-
-      
-  <div id="chat-window" class="collapsed logged">
-      <div id="ld_sp"> Please login ... </div>
-        <div class="title_chat">
-            Live-support
-        </div>
-        <div id="chat_content">
-            <div id="display-mess"></div>
-            <span>Enter a message</span>
-            <textarea id="text-mess"></textarea>
-        </div>
-  </div>
-  
 
 <div id="login-modal" class="modal hide fade">
   <div class="modal-header">
