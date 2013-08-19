@@ -197,9 +197,32 @@ io.sockets.on('connection', function (socket) {
     this.emit('receive-prices', myPrices)
   })
 
+  socket.on('find-admin', function(data) {
+    console.log("data",data)
+    if(data){
+      app.adminId = socket.id
+    }
+    console.log("app.adminId",app.adminId)
+  })
+  
+  socket.on('admin-send-mess', function(data) {
+    io.sockets.clients().forEach(function(client){
+        if(client.id == data.idSend){
+          client.emit('new-mess', [data])
+        }
+      })
+    
+  })
+
   socket.on('client-send-mess', function(data) {
       io.sockets.clients().forEach(function(client){
-        client.emit('new-mess', [data])
+        if(client.id == socket.id){
+          client.emit('new-mess', [data])
+        }
+        if(app.adminId == client.id){
+          data.idClient = socket.id
+          client.emit('admin-mess', data)
+        }
       })
   })
   socket.on('update-price', function(data) {
