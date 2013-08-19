@@ -2,7 +2,7 @@ jQuery(function($) {
 
   var socket = io.connect('http://localhost:3000')
   var messTemplaete = _.template($('#message-template').html())
-  var user = {name:''}
+  var user = {name:'test'}
   renderUser(user)
 
   $(".log_btn").on('click', function(){
@@ -40,7 +40,6 @@ jQuery(function($) {
 
   $("#text-mess").on('keypress', function(event) {
     
-    console.log("event.which ",event.which )
     var mess = $("#text-mess").val()
     if(event.which == 13){
       var data = {
@@ -67,7 +66,8 @@ jQuery(function($) {
     
     
   socket.on('new-mess', function (data) {
-    $("#display-mess").append(messTemplaete(data))
+    $("#display-mess").append(messTemplaete(data[0]))
+    $("#admin-chat").append(messTemplaete(data[0]))
   })
 
 

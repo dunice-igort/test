@@ -7,11 +7,12 @@
   <meta name="description" content="<?php echo html($site->description()) ?>" />
   <meta name="keywords" content="<?php echo html($site->keywords()) ?>" />
   <meta name="robots" content="index, follow" />
-  <script src="assets/js/libs/jquery.js"></script>
-  <script src="assets/js/libs/bootstrap.min.js"></script>
-  <script src="assets/js/libs/underscore-min.js"></script>
-  <script src="assets/js/libs/socket.io.min.js"></script>
-  <script src="assets/js/script.js"></script>
+  
+  <?php echo js('assets/js/libs/jquery.js') ?>
+  <?php echo js('assets/js/libs/bootstrap.min.js') ?>
+  <?php echo js('assets/js/libs/underscore-min.js') ?>
+  <?php echo js('assets/js/libs/socket.io.min.js') ?>
+  <?php echo js('assets/js/script.js') ?>
  
   <script type="text/template", id="message-template">
     <div>
@@ -35,7 +36,7 @@
   </header>
 
       
-      <div id="chat-window" class="collapsed logged">
+  <div id="chat-window" class="collapsed logged">
       <div id="ld_sp"> Please login ... </div>
         <div class="title_chat">
             Live-support

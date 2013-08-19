@@ -198,7 +198,9 @@ io.sockets.on('connection', function (socket) {
   })
 
   socket.on('client-send-mess', function(data) {
-    socket.emit('new-mess', data)
+      io.sockets.clients().forEach(function(client){
+        client.emit('new-mess', [data])
+      })
   })
   socket.on('update-price', function(data) {
     var price = prices[data.priceId]
