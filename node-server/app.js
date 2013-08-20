@@ -223,14 +223,15 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('client-send-mess', function(data) {
       io.sockets.clients().forEach(function(client){
-        
-        if(client.userInfo.id == socket.userInfo.id){
-          client.emit('new-mess', [data])
-        }
-        if(client.userInfo.group == "admin"){
-          data.idClient = socket.userInfo.id
-          client.emit('admin-mess', data)
-        }
+        if(client.userInfo && socket.userInfo){
+            if(client.userInfo.id == socket.userInfo.id){
+              client.emit('new-mess', [data])
+            }
+            if(client.userInfo.group == "admin"){
+              data.idClient = socket.userInfo.id
+              client.emit('admin-mess', data)
+            }
+         }
 
 //        if(client.id == socket.id){
 //          client.emit('new-mess', [data])
