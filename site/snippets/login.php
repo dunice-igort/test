@@ -1,4 +1,4 @@
-<?php $login = Auth::login() ?>
+<?php $login = Auth::login("") ?>
 
 <form action="<?php $page->url() ?>" method="post">
 

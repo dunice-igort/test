@@ -34,7 +34,6 @@ jQuery(function ($) {
       var mess = $(this).val()
       var idSend = $(this).attr("send")
       if (event.which == 13) {
-        console.log("press")
         var data = {
           mess: mess,
           idSend: idSend,

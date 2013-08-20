@@ -50,7 +50,6 @@ jQuery(function($) {
   }
   
   function sendMessage(data) {
-    console.log("sd")
     socket.emit('client-send-mess', data)
   }
   
