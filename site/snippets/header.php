@@ -13,7 +13,7 @@
   <?php echo js('assets/js/libs/underscore-min.js') ?>
   <?php echo js('assets/js/libs/socket.io.min.js') ?>
   <?php echo js('assets/js/script.js') ?>
- 
+
   <script type="text/template", id="message-template">
     <div>
       <span class="name-message"><%=name%> : </span>
@@ -56,42 +56,60 @@
 </head>
 
 <body>
+  <div>
+
+  </div>
 
   <header>
-    <div class="user-name dib">ADAPTIV -<span id="userName"></span></div>
-    <div class="dib fr log_btn">Login</div>
-    <a href="/kirbycms/kirbycms-panel"><div id="temp-button" class="dib header-button"></div></a>
+  
+  
+    <div class="user-name dib">
+       <?php if($user = Auth::user()): ?>
+      <span id="userName" name="<?php echo $user->username() ?>" idUser ="<?php echo $user->id() ?>" >
+        Hey <?php echo $user->username() ?>
+      </span>
+      <?php else: ?>
+        <span id="userName" name="false" idUser ="false" >
+        <div>please login</div>
+      <?php endif ?>
+    </div>
+    <?php if($user = Auth::user()): ?>
+      <a href="logout">  <div class="dib fr log_btn">logout</div>
+    <?php else: ?>
+      <a href="logout">  <div class="dib fr log_btn">login</div>
+    <?php endif ?>
+    <a href="/test/kirbycms-panel"><div id="temp-button" class="dib header-button"></div></a>
   </header>
 
-<div id="login-modal" class="modal hide fade">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Login</h3>
-  </div>
-  <div class="modal-body">
-    <table>
-      <tr>
-        <td>
-          <lable name="name">Enter you name</lable>
-        </td>
-        <td>
-          <input name="name" type="text" id="login-name"></input>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <lable name="password">Enter you password &nbsp</lable>
-        </td>
-        <td>
-          <input name="password" id="login-pass" type="password"></input>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-ok">Login</button>
-  </div>
-</div>
+<!--<div id="login-modal" class="modal hide fade">-->
+<!--  <div class="modal-header">-->
+<!--    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+<!--    <h3 id="myModalLabel">Login</h3>-->
+<!--  </div>-->
+<!--  <div class="modal-body">-->
+<!--    <table>-->
+<!--      <tr>-->
+<!--        <td>-->
+<!--          <lable name="name">Enter you name</lable>-->
+<!--        </td>-->
+<!--        <td>-->
+<!--          <input name="name" type="text" id="login-name"></input>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      <tr>-->
+<!--        <td>-->
+<!--          <lable name="password">Enter you password &nbsp</lable>-->
+<!--        </td>-->
+<!--        <td>-->
+<!--          <input name="password" id="login-pass" type="password"></input>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--    </table>-->
+<!--  </div>-->
+<!--  <div class="modal-footer">-->
+<!--    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>-->
+<!--    <button class="btn btn-ok">Login</button>-->
+<!--  </div>-->
+<!--</div>-->
 <div id="container">
   

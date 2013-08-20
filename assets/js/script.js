@@ -2,13 +2,14 @@ jQuery(function($) {
     
   var socket = io.connect('http://localhost:3000')
     , messTemplaete = _.template($('#message-template').html())
-    , user = {name:'test'}
+    , user = {}
     , adminChat = _.template($('#admin-chat-template').html())
     , chatWindow = _.template($('#chat-window-template').html())
     , reg = new RegExp("admin")
     , hits = location.pathname.match(reg)
     
-  renderUser(user)
+    
+    
   
   if(hits){
     socket.emit("find-admin",true)
@@ -17,16 +18,17 @@ jQuery(function($) {
     $("body").append(chatWindow)
   }
   
-  $(".log_btn").on('click', function(){
-    $('.modal').modal('show')
-  })
-  
-  $(".btn-ok").on('click', function(){
-    var logName = $("#login-name").val()
-      , logPass = $("#login-pass").val()
-    user = {name: logName}
-    renderUser(user)
-  })
+  findUser()
+//  $(".log_btn").on('click', function(){
+//    $('.modal').modal('show')
+//  })
+//  
+//  $(".btn-ok").on('click', function(){
+//    var logName = $("#login-name").val()
+//      , logPass = $("#login-pass").val()
+//    user = {name: logName}
+//    renderUser(user)
+//  })
   
   socket.on('user-logged',function (data) {
      console.log("daaaaa", data)
@@ -56,10 +58,14 @@ jQuery(function($) {
     }
   })
    
-  function renderUser(user) {
-    $("#chat-window").toggleClass('logged', !(user.name == ''))
-    $("#userName").html((user.name) ? user.name : 'please login')
-    $('.modal').modal('hide')
+  function findUser() {
+    var userName = $("#userName").attr("name")
+    var userId = $("#userName").attr("idUser")
+    user={
+        name:userName,
+        id:userId
+    }
+    $("#chat-window").toggleClass('logged', !(user.name == 'false'))
   }
    
   function sendMessage(data) {
