@@ -214,10 +214,12 @@ io.sockets.on('connection', function (socket) {
   
   socket.on('admin-send-mess', function(data) {
     io.sockets.clients().forEach(function(client){
-        if(client.userInfo.id == data.idSend){
-          client.emit('new-mess', [data])
-        }
-      })
+      if(client.userInfo && data.idSend){
+          if(client.userInfo.id == data.idSend){
+            client.emit('new-mess', [data])
+          }
+      }
+    })
     
   })
 
