@@ -1,6 +1,6 @@
 jQuery(function($) {
 
-  var socket = io.connect('http://localhost:3000')
+  var socket = io.connect('http://dunice.ru:3000')
     , ownPriceRequestTemplate = _.template($('#owner-price-request-item').html())
     , priceRequestTemplate = _.template($('#non-owner-price-request-item').html());
 
