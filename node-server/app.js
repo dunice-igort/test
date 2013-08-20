@@ -186,7 +186,11 @@ io.sockets.on('connection', function (socket) {
     
 
   socket.on('find-user', function(data) {
-    this.emit('user-logged', data)
+    socket.userInfo={
+      name:data.name,
+      id:data.id,
+      group:"users"
+     }
   })
 
   socket.on('get-prices', function() {
@@ -200,14 +204,18 @@ io.sockets.on('connection', function (socket) {
   socket.on('find-admin', function(data) {
     console.log("data",data)
     if(data){
+      socket.userInfo={
+        name:data.name,
+        id:data.id,
+        group:"admin"
+      }
       app.adminId = socket.id
     }
-    console.log("app.adminId",app.adminId)
   })
   
   socket.on('admin-send-mess', function(data) {
     io.sockets.clients().forEach(function(client){
-        if(client.id == data.idSend){
+        if(client.userInfo.id == data.idSend){
           client.emit('new-mess', [data])
         }
       })
@@ -216,13 +224,27 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('client-send-mess', function(data) {
       io.sockets.clients().forEach(function(client){
-        if(client.id == socket.id){
+        console.log("*************************************")
+        console.log("______________________________________")
+        console.log("client:", client)
+        console.log("______________________________________")
+        console.log("*************************************")
+        
+        if(client.userInfo.id == socket.userInfo.id){
           client.emit('new-mess', [data])
         }
-        if(app.adminId == client.id){
-          data.idClient = socket.id
+        if(client.userInfo.group == "admin"){
+          data.idClient = socket.userInfo.id
           client.emit('admin-mess', data)
         }
+
+//        if(client.id == socket.id){
+//          client.emit('new-mess', [data])
+//        }
+//        if(app.adminId == client.id){
+//          data.idClient = socket.id
+//          client.emit('admin-mess', data)
+//        }
       })
   })
   socket.on('update-price', function(data) {

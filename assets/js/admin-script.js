@@ -3,8 +3,11 @@ jQuery(function ($) {
     messTemplaete = _.template($('#message-template').html()),
     adminChat = _.template($('#admin-chat-template').html()),
     user = {}
-    socket.emit("find-admin", true)
 
+  findUser()
+  socket.emit("find-admin", user)
+  $("#chat-window").remove() 
+   
   socket.on('admin-mess', function (data) {
     var dataMessArr = $(".display-mess"),
       appendSt = false

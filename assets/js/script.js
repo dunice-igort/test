@@ -5,8 +5,8 @@ jQuery(function($) {
     , user = {}
     , adminChat = _.template($('#admin-chat-template').html())
     , chatWindow = _.template($('#chat-window-template').html())
-    , reg = new RegExp("admin")
-    , hits = location.pathname.match(reg)
+//    , reg = new RegExp("admin")
+//    , hits = location.pathname.match(reg)
   
   $("body").append(chatWindow)
   findUser()
@@ -46,9 +46,11 @@ jQuery(function($) {
         id:userId
     }
     $("#chat-window").toggleClass('logged', !(user.name == 'false'))
+    socket.emit("find-user",user)
   }
   
   function sendMessage(data) {
+    console.log("sd")
     socket.emit('client-send-mess', data)
   }
   
