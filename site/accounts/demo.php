@@ -1,7 +1,7 @@
 <?php if(!defined('KIRBY')) exit ?>
 username: demo
 password: demo
-group:    admin
+group:    user
 id:1001
 
 
